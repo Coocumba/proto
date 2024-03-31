@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package user;
+
+option java_package = "com.coocumba.iam.proto";
+option java_outer_classname = "UserProto";
+
+import "google/protobuf/empty.proto";
+
+service UserService {
+  rpc getUsers (google.protobuf.Empty) returns (UserList) {};
+  rpc createUser (User) returns (UserWithoutPass) {};
+  rpc getSingleUser (UserId) returns (UserWithoutPass) {};
+  rpc updateUser (UpdateUser) returns (Result) {};
+  rpc deleteUser (UserId) returns (Result) {};
+  rpc findUserByMail (MailId) returns (User) {};
+  rpc findUserByMailWithoutPass (MailId) returns (UserWithoutPass) {};
+  rpc findListOfUserByIds(UserIdList) returns (UserList) {};
+}
+
+
+message UserList {
+  repeated UserWithoutPass users = 1;
+}
+
+message UserWithoutPass {
+  string user_mail = 1;
+  string user_name = 2;
+  int64 id = 3;
+  string dob = 4;
+}
+
+message UserIdList {
+  repeated int64 ids = 1;
+}
+
+message MailId {
+  string user_mail = 1;
+}
+
+message User {
+  string user_mail = 1;
+  string user_name = 2;
+  int64 id = 3;
+  string dob = 4;
+  string password = 5;
+}
+
+message UpdateUser {
+  string user_mail = 1;
+  string user_name = 2;
+  int64 id = 3;
+  string dob = 4;
+  string password = 5;
+}
+
+message UserId {
+  int64 id = 1;
+}
+
+message Result {
+  string status = 1;
+}

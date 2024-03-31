@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package friend;
+
+service FriendService {
+  rpc getFrds (MyId) returns (FrdsList) {};
+  rpc acceptFrd (InvitationId) returns (Result) {};
+  rpc rejectFrd (InvitationId) returns (Result) {};
+  rpc inviteFrd (InvitationReq) returns (Result) {};
+  rpc getPendingInvitation(MyId) returns (InvitationList) {};
+}
+
+message Empty {}
+
+message MyId {
+  string id = 1;
+}
+
+message InvitationId {
+  string invitation_id = 1;
+}
+
+message SenderId {
+  string sender_id = 1;
+}
+
+message FrdsList {
+  repeated Frd frds = 1;
+}
+
+message Frd {
+  string usr_mail = 1;
+  string usr_name = 2;
+  string id = 3;
+  string dob = 4;
+}
+
+message InvitationList {
+  repeated Invitation invitations = 1;
+}
+
+message Invitation {
+  string id = 1;
+  Frd sender = 2;
+  string receiver_id = 3;
+}
+
+message InvitationReq {
+  string sender_id = 1;
+  string sender_mail = 2;
+  string target_mail_address = 3;
+}
+
+message SenderReceiverId {
+  string sender_id = 1;
+  string receiver_id = 2;
+}
+
+message ReceiverId {
+  string receiver_id = 1;
+}
+
+message Result {
+  string status = 1;
+}
