@@ -11,8 +11,8 @@ service UserService {
   rpc getUsers (google.protobuf.Empty) returns (UserList) {};
   rpc createUser (User) returns (UserWithoutPass) {};
   rpc getSingleUser (UserId) returns (UserWithoutPass) {};
-  rpc updateUser (UpdateUser) returns (Result) {};
-  rpc deleteUser (UserId) returns (Result) {};
+  rpc updateUser (UpdateUser) returns (UserWithoutPass) {};
+  rpc deleteUser (UserId) returns (google.protobuf.Empty) {};
   rpc findUserByMail (MailId) returns (User) {};
   rpc findUserByMailWithoutPass (MailId) returns (UserWithoutPass) {};
   rpc findListOfUserByIds(UserIdList) returns (UserList) {};
