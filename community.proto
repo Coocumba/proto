@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package community;
+
+option java_package = "com.coocumba.community.proto";
+option java_outer_classname = "CommunityProto";
+
+import "google/protobuf/empty.proto";
+
+service CommunityService {
+  rpc getCommunities (GetCommunitiesRequest) returns (GetCommunitiesResponse) {};
+  rpc createCommunity (CreateCommunityRequest) returns (CreateCommunityResponse) {};
+  rpc getSingleCommunity (GetSingleCommunityRequest) returns (GetSingleCommunityResponse) {};
+  rpc updateCommunity (UpdateCommunityRequest) returns (UpdateCommunityResponse) {};
+  rpc deleteCommunity (DeleteCommunityRequest) returns (google.protobuf.Empty) {};
+  rpc addUserRole(AddUserRoleRequest) returns (AddUserRoleResponse) {};
+}
+
+message GetCommunitiesRequest {
+  string user_id = 1;
+}
+
+message GetCommunitiesResponse {
+  repeated Community communities = 1;
+}
+
+message CreateCommunityRequest {
+  string community_name = 1;
+  string user_id = 2;
+}
+
+message CreateCommunityResponse {
+  string community_name = 1;
+  string id = 2;
+  string created_by = 3;
+  string created_at = 4;
+  repeated UsersRoles users_roles = 5;
+}
+
+message GetSingleCommunityRequest {
+  string community_id = 1;
+  string user_id = 2;
+}
+
+message GetSingleCommunityResponse {
+  string community_name = 1;
+  string id = 2;
+  string created_by = 3;
+  string created_at = 4;
+  repeated UsersRoles users_roles = 5;
+}
+
+message UpdateCommunityRequest {
+  string user_id = 1;
+  string community_id = 2;
+  string community_name = 3;
+  repeated UsersRoles users_roles = 4;
+}
+
+message UpdateCommunityResponse {
+  string community_name = 1;
+  string id = 2;
+  string created_by = 3;
+  string created_at = 4;
+  repeated UsersRoles users_roles = 5;
+}
+
+message DeleteCommunityRequest {
+  string community_id = 1;
+  string user_id = 2;
+}
+
+message AddUserRoleRequest {
+  string community_id = 1;
+  string user_id = 2;
+  string new_user_email = 3; // This email is adding user's email.
+}
+
+message AddUserRoleResponse {
+  string community_name = 1;
+  string id = 2;
+  string created_by = 3;
+  string created_at = 4;
+  repeated UsersRoles users_roles = 5;
+}
+
+message Community {
+  string community_name = 1;
+  string id = 2;
+  string created_by = 3;
+  string created_at = 4;
+  repeated UsersRoles users_roles = 5;
+}
+
+message UsersRoles {
+  string id = 1;
+  User user = 2;
+  Role role = 3;
+}
+
+message User {
+  string id = 1;
+  string user_mail = 2;
+  string user_name = 3;
+}
+
+
+message Role {
+  string id = 1;
+  string role = 2;
+  string name = 3;
+}
