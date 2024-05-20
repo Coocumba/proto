@@ -13,7 +13,7 @@ service CommunityService {
   rpc getSingleCommunity (GetSingleCommunityRequest) returns (GetSingleCommunityResponse) {};
   rpc updateCommunity (UpdateCommunityRequest) returns (UpdateCommunityResponse) {};
   rpc deleteCommunity (DeleteCommunityRequest) returns (google.protobuf.Empty) {};
-  rpc addUser(AddUserRequest) returns (AddUserResponse) {};
+  rpc addCommunityUser(AddCommunityUserRequest) returns (AddCommunityUserResponse) {};
 }
 
 message GetCommunitiesRequest {
@@ -35,7 +35,6 @@ message CreateCommunityResponse {
   string id = 2;
   string created_by = 3;
   string created_at = 4;
-  // repeated UsersRoles users_roles = 5;
 }
 
 message GetSingleCommunityRequest {
@@ -48,14 +47,12 @@ message GetSingleCommunityResponse {
   string id = 2;
   string created_by = 3;
   string created_at = 4;
-  // repeated UsersRoles users_roles = 5;
 }
 
 message UpdateCommunityRequest {
   string user_id = 1;
   string community_id = 2;
   string community_name = 3;
-  // repeated UsersRoles users_roles = 4;
 }
 
 message UpdateCommunityResponse {
@@ -63,7 +60,6 @@ message UpdateCommunityResponse {
   string id = 2;
   string created_by = 3;
   string created_at = 4;
-  // repeated UsersRoles users_roles = 5;
 }
 
 message DeleteCommunityRequest {
@@ -71,14 +67,16 @@ message DeleteCommunityRequest {
   string user_id = 2;
 }
 
-message AddUserRequest {
+message AddCommunityUserRequest {
   string community_id = 1;
   string user_id = 2;
   string new_user_email = 3; // This email is adding user's email.
   string role_id = 4;
+  string added_by = 5;
+  string added_at = 6;
 }
 
-message AddUserResponse {
+message AddCommunityUserResponse {
   string id = 1;
   string role = 2;
   User user = 3;

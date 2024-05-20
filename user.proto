@@ -26,12 +26,12 @@ message UserList {
 message UserWithoutPass {
   string user_mail = 1;
   string user_name = 2;
-  int64 id = 3;
+  string id = 3;
   string dob = 4;
 }
 
 message UserIdList {
-  repeated int64 ids = 1;
+  repeated string ids = 1;
 }
 
 message MailId {
@@ -41,7 +41,7 @@ message MailId {
 message User {
   string user_mail = 1;
   string user_name = 2;
-  int64 id = 3;
+  string id = 3;
   string dob = 4;
   string password = 5;
 }
@@ -49,13 +49,13 @@ message User {
 message UpdateUser {
   string user_mail = 1;
   string user_name = 2;
-  int64 id = 3;
+  string id = 3;
   string dob = 4;
   string password = 5;
 }
 
 message UserId {
-  int64 id = 1;
+  string id = 1;
 }
 
 message Result {
