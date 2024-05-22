@@ -78,8 +78,11 @@ message AddCommunityUserRequest {
 
 message AddCommunityUserResponse {
   string id = 1;
-  string role = 2;
-  User user = 3;
+  string community_id = 2;
+  string role = 3;
+  string added_by = 4;
+  string added_at = 5;
+  User user = 6;
 }
 
 message GetCommunityUsersRequest {
