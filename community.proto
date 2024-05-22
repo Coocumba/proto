@@ -72,8 +72,7 @@ message AddCommunityUserRequest {
   string user_id = 2;
   string new_user_email = 3; // This email is adding user's email.
   string role_id = 4;
-  string added_by = 5;
-  string added_at = 6;
+  string added_at = 5;
 }
 
 message AddCommunityUserResponse {
@@ -91,7 +90,7 @@ message Community {
 
 message User {
   string id = 1;
-  string user_mail = 2;
-  string user_name = 3;
+  string mail = 2;
+  string name = 3;
 }
 
