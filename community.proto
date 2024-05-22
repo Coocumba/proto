@@ -14,6 +14,7 @@ service CommunityService {
   rpc updateCommunity (UpdateCommunityRequest) returns (UpdateCommunityResponse) {};
   rpc deleteCommunity (DeleteCommunityRequest) returns (google.protobuf.Empty) {};
   rpc addCommunityUser(AddCommunityUserRequest) returns (AddCommunityUserResponse) {};
+  rpc getCommunityUsers(GetCommunityUsersRequest) returns (GetCommunityUsersResponse) {};
 }
 
 message GetCommunitiesRequest {
@@ -81,11 +82,26 @@ message AddCommunityUserResponse {
   User user = 3;
 }
 
+message GetCommunityUsersRequest {
+  string community_id = 1;
+  string user_id = 2;
+}
+
+message GetCommunityUsersResponse {
+  repeated CommunityUser comunity_users = 1;
+}
+
 message Community {
   string community_name = 1;
   string id = 2;
   string created_by = 3;
   string created_at = 4;
+}
+
+message CommunityUser {
+  string id = 1;
+  string role = 2;
+  User user = 3;
 }
 
 message User {
