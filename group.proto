@@ -15,6 +15,9 @@ service GroupService {
   rpc deleteGroup (DeleteGroupRequest) returns (google.protobuf.Empty) {};
   rpc addGroupUser (AddGroupUserRequest) returns (AddGroupUserResponse) {};
   rpc getGroupUsers(GetGroupUsersRequest) returns (GetGroupUsersResponse) {};
+  rpc getGroupUser(GetGroupUserRequest) returns (GetGroupUserResponse) {};
+  rpc putGroupUser(PutGroupUserRequest) returns (PutGroupUserResponse) {};
+  rpc deleteGroupUser(DeleteGroupUserRequest) returns (google.protobuf.Empty) {};
 }
 
 message GetGroupsRequest {
@@ -97,6 +100,40 @@ message GetGroupUsersRequest {
 
 message GetGroupUsersResponse {
   repeated GroupUser group_users = 1;
+}
+
+message GetGroupUserRequest {
+  string group_id = 1;
+  string user_id = 2;
+}
+
+message GetGroupUserResponse {
+  string id = 1;
+  string group_id = 2;
+  string role = 3;
+  string added_by = 4;
+  string added_at = 5;
+  User user = 6;
+}
+
+message PutGroupUserRequest {
+  string group_id = 1;
+  string user_id = 2;
+  string role = 3;
+}
+
+message PutGroupUserResponse {
+  string id = 1;
+  string group_id = 2;
+  string role = 3;
+  string added_by = 4;
+  string added_at = 5;
+  User user = 6;
+}
+
+message DeleteGroupUserRequest {
+  string group_id = 1;
+  string user_id = 2;
 }
 
 message Group {
