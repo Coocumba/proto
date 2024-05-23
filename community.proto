@@ -16,7 +16,7 @@ service CommunityService {
   rpc addCommunityUser(AddCommunityUserRequest) returns (AddCommunityUserResponse) {};
   rpc getCommunityUsers(GetCommunityUsersRequest) returns (GetCommunityUsersResponse) {};
   rpc getCommunityUser(GetCommunityUserRequest) returns (GetCommunityUserResponse) {};
-  rpc putCommunityUser(PutCommunityUserRequest) returns (PutCommunityUserResponse) {};
+  rpc updateCommunityUser(UpdateCommunityUserRequest) returns (UpdateCommunityUserResponse) {};
   rpc deleteCommunityUser(DeleteCommunityUserRequest) returns (google.protobuf.Empty) {};
 }
 
@@ -71,9 +71,15 @@ message DeleteCommunityRequest {
   string user_id = 2;
 }
 
+// ----------------------------------------------------------------------
+
+// We have user_id column in CommunityUser table
+// So, this user_id key refers to that column.
+// accessing_user_id is what, how accessing that entity.
+
 message AddCommunityUserRequest {
   string community_id = 1;
-  string user_id = 2;
+  string accessing_user_id = 2;
   string new_user_email = 3; // This email is adding user's email.
   string role_id = 4;
   string added_at = 5;
@@ -90,7 +96,7 @@ message AddCommunityUserResponse {
 
 message GetCommunityUsersRequest {
   string community_id = 1;
-  string user_id = 2;
+  string accessing_user_id = 2;
 }
 
 message GetCommunityUsersResponse {
@@ -100,6 +106,7 @@ message GetCommunityUsersResponse {
 message GetCommunityUserRequest {
   string community_id = 1;
   string user_id = 2;
+  string accessing_user_id = 3;
 }
 
 message GetCommunityUserResponse {
@@ -111,13 +118,14 @@ message GetCommunityUserResponse {
   User user = 6;
 }
 
-message PutCommunityUserRequest {
+message UpdateCommunityUserRequest {
   string community_id = 1;
   string user_id = 2;
   string role = 3;
+  string accessing_user_id = 4;
 }
 
-message PutCommunityUserResponse {
+message UpdateCommunityUserResponse {
   string id = 1;
   string community_id = 2;
   string role = 3;
@@ -129,6 +137,7 @@ message PutCommunityUserResponse {
 message DeleteCommunityUserRequest {
   string community_id = 1;
   string user_id = 2;
+  string accessing_user_id = 3;
 }
 
 message Community {

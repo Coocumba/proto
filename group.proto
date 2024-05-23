@@ -16,7 +16,7 @@ service GroupService {
   rpc addGroupUser (AddGroupUserRequest) returns (AddGroupUserResponse) {};
   rpc getGroupUsers(GetGroupUsersRequest) returns (GetGroupUsersResponse) {};
   rpc getGroupUser(GetGroupUserRequest) returns (GetGroupUserResponse) {};
-  rpc putGroupUser(PutGroupUserRequest) returns (PutGroupUserResponse) {};
+  rpc updateGroupUser(UpdateGroupUserRequest) returns (UpdateGroupUserResponse) {};
   rpc deleteGroupUser(DeleteGroupUserRequest) returns (google.protobuf.Empty) {};
 }
 
@@ -116,13 +116,13 @@ message GetGroupUserResponse {
   User user = 6;
 }
 
-message PutGroupUserRequest {
+message UpdateGroupUserRequest {
   string group_id = 1;
   string user_id = 2;
   string role = 3;
 }
 
-message PutGroupUserResponse {
+message UpdateGroupUserResponse {
   string id = 1;
   string group_id = 2;
   string role = 3;
