@@ -7,7 +7,7 @@ option java_outer_classname = "AudioChannelProto";
 
 import "google/protobuf/empty.proto";
 
-service AudioTowerAntennaService {
+service AudioChannelService {
   rpc getAudioChannels (GetAudioChannelRequest) returns (GetAudioChannelResponse) {};
   rpc createAudioChannel (CreateAudioChannelRequest) returns (CreateAudioChannelResponse) {};
   rpc getSingleAudioChannel (GetSingleAudioChannelRequest) returns (GetSingleAudioChannelResponse) {};
