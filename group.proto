@@ -30,7 +30,7 @@ message GetGroupsResponse {
 }
 
 message CreateGroupRequest {
-  string group_name = 1;
+  string name = 1;
   string community_id = 2;
   string user_id = 3;
   string created_at = 4;
@@ -39,7 +39,7 @@ message CreateGroupRequest {
 message CreateGroupResponse {
   string id = 1;
   string community_id = 2;
-  string group_name = 3;
+  string name = 3;
   string created_by = 4;
   string created_at = 5;
 }
@@ -52,7 +52,7 @@ message GetSingleGroupRequest {
 message GetSingleGroupResponse {
   string id = 1;
   string community_id = 2;
-  string group_name = 3;
+  string name = 3;
   string created_by = 4;
   string created_at = 5;
 }
@@ -60,13 +60,13 @@ message GetSingleGroupResponse {
 message UpdateGroupRequest {
   string user_id = 1;
   string group_id = 2;
-  string group_name = 3;
+  string name = 3;
 }
 
 message UpdateGroupResponse {
   string id = 1;
   string community_id = 2;
-  string group_name = 3;
+  string name = 3;
   string created_by = 4;
   string created_at = 5;
 }
@@ -142,7 +142,7 @@ message DeleteGroupUserRequest {
 message Group {
   string id = 1;
   string community_id = 2;
-  string group_name = 3;
+  string name = 3;
   string created_by = 4;
   string created_at = 5;
 }

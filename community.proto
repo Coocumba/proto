@@ -29,13 +29,13 @@ message GetCommunitiesResponse {
 }
 
 message CreateCommunityRequest {
-  string community_name = 1;
+  string name = 1;
   string user_id = 2;
   string created_at = 3;
 }
 
 message CreateCommunityResponse {
-  string community_name = 1;
+  string name = 1;
   string id = 2;
   string created_by = 3;
   string created_at = 4;
@@ -47,7 +47,7 @@ message GetSingleCommunityRequest {
 }
 
 message GetSingleCommunityResponse {
-  string community_name = 1;
+  string name = 1;
   string id = 2;
   string created_by = 3;
   string created_at = 4;
@@ -56,11 +56,11 @@ message GetSingleCommunityResponse {
 message UpdateCommunityRequest {
   string user_id = 1;
   string community_id = 2;
-  string community_name = 3;
+  string name = 3;
 }
 
 message UpdateCommunityResponse {
-  string community_name = 1;
+  string name = 1;
   string id = 2;
   string created_by = 3;
   string created_at = 4;
@@ -141,7 +141,7 @@ message DeleteCommunityUserRequest {
 }
 
 message Community {
-  string community_name = 1;
+  string name = 1;
   string id = 2;
   string created_by = 3;
   string created_at = 4;
