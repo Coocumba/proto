@@ -8,7 +8,7 @@ option java_outer_classname = "AudioChannelProto";
 import "google/protobuf/empty.proto";
 
 service AudioChannelService {
-  rpc getAudioChannels (GetAudioChannelRequest) returns (GetAudioChannelResponse) {};
+  rpc getAudioChannels (GetAudioChannelsRequest) returns (GetAudioChannelsResponse) {};
   rpc createAudioChannel (CreateAudioChannelRequest) returns (CreateAudioChannelResponse) {};
   rpc getSingleAudioChannel (GetSingleAudioChannelRequest) returns (GetSingleAudioChannelResponse) {};
   rpc updateAudioChannel (UpdateAudioChannelRequest) returns (UpdateAudioChannelResponse) {};
@@ -16,12 +16,12 @@ service AudioChannelService {
   rpc addAudioChannelUser (AddAudioChannelUserRequest) returns (AddAudioChannelUserResponse) {};
 }
 
-message GetAudioChannelRequest {
+message GetAudioChannelsRequest {
   string group_id = 1;
   string user_id = 2;
 }
 
-message GetAudioChannelResponse {
+message GetAudioChannelsResponse {
   repeated AudioChannel audiochannels = 1;
 }
 
