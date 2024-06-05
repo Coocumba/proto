@@ -14,6 +14,10 @@ service AudioChannelService {
   rpc updateAudioChannel (UpdateAudioChannelRequest) returns (UpdateAudioChannelResponse) {};
   rpc deleteAudioChannel (DeleteAudioChannelRequest) returns (google.protobuf.Empty) {};
   rpc addAudioChannelUser (AddAudioChannelUserRequest) returns (AddAudioChannelUserResponse) {};
+  rpc getAudioChannelUsers(GetAudioChannelUsersRequest) returns (GetAudioChannelUsersResponse) {};
+  rpc getAudioChannelUser(GetAudioChannelUserRequest) returns (GetAudioChannelUserResponse) {};
+  rpc updateAudioChannelUser(UpdateAudioChannelUserRequest) returns (UpdateAudioChannelUserResponse) {};
+  rpc deleteAudioChannelUser(DeleteAudioChannelUserRequest) returns (google.protobuf.Empty) {};
 }
 
 message GetAudioChannelsRequest {
@@ -82,11 +86,65 @@ message AddAudioChannelUserRequest {
 
 message AddAudioChannelUserResponse {
   string id = 1;
-  string textchannel_id = 2;
+  string audiochannel_id = 2;
   string role = 3;
   string added_by = 4;
   string added_at = 5;
   User user = 6;
+}
+
+message GetAudioChannelUsersRequest {
+  string audiochannel_id = 1;
+  string accessing_user_id = 2;
+}
+
+message GetAudioChannelUsersResponse {
+  repeated AudioChannelUser audiochannel_users = 1;
+}
+
+message GetAudioChannelUserRequest {
+  string audiochannel_id = 1;
+  string user_id = 2;
+  string accessing_user_id = 3;
+}
+
+message GetAudioChannelUserResponse {
+  string id = 1;
+  string audiochannel_id = 2;
+  string role = 3;
+  string added_by = 4;
+  string added_at = 5;
+  User user = 6;
+}
+
+message UpdateAudioChannelUserRequest {
+  string audiochannel_id = 1;
+  string user_id = 2;
+  string role = 3;
+  string accessing_user_id = 4;
+}
+
+message UpdateAudioChannelUserResponse {
+  string id = 1;
+  string audiochannel_id = 2;
+  string role = 3;
+  string added_by = 4;
+  string added_at = 5;
+  User user = 6;
+}
+
+message DeleteAudioChannelUserRequest {
+  string audiochannel_id = 1;
+  string user_id = 2;
+  string accessing_user_id = 3;
+}
+
+message AudioChannelUser {
+  string id = 1;
+  string group_id = 2;
+  string name = 3;
+  string created_by = 4;
+  string created_at = 5;
 }
 
 message AudioChannel {
