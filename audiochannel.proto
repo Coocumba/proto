@@ -141,10 +141,11 @@ message DeleteAudioChannelUserRequest {
 
 message AudioChannelUser {
   string id = 1;
-  string group_id = 2;
+  string audiochannel_id = 2;
   string name = 3;
   string created_by = 4;
   string created_at = 5;
+  User user = 6;
 }
 
 message AudioChannel {
