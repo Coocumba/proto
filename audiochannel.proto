@@ -143,8 +143,8 @@ message AudioChannelUser {
   string id = 1;
   string audiochannel_id = 2;
   string role = 3;
-  string created_by = 4;
-  string created_at = 5;
+  string added_by = 4;
+  string added_at = 5;
   User user = 6;
 }
 
