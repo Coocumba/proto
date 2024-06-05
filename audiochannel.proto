@@ -12,7 +12,7 @@ service AudioChannelService {
   rpc createAudioChannel (CreateAudioChannelRequest) returns (CreateAudioChannelResponse) {};
   rpc getSingleAudioChannel (GetSingleAudioChannelRequest) returns (GetSingleAudioChannelResponse) {};
   rpc updateAudioChannel (UpdateAudioChannelRequest) returns (UpdateAudioChannelResponse) {};
-  rpc deleteAta (DeleteAudioChannelRequest) returns (google.protobuf.Empty) {};
+  rpc deleteAudioChannel (DeleteAudioChannelRequest) returns (google.protobuf.Empty) {};
   rpc addAudioChannelUser (AddAudioChannelUserRequest) returns (AddAudioChannelUserResponse) {};
 }
 
