@@ -13,7 +13,7 @@ service TextChannelService {
   rpc getSingleTextChannel (GetSingleTextChannelRequest) returns (GetSingleTextChannelResponse) {};
   rpc updateTextChannel (UpdateTextChannelRequest) returns (UpdateTextChannelResponse) {};
   rpc deleteTextChannel (DeleteTextChannelRequest) returns (google.protobuf.Empty) {};
-  rpc addAddTextChannelUser(AddTextChannelUserRequest) returns (AddTextChannelUserResponse) {};
+  rpc addTextChannelUser(AddTextChannelUserRequest) returns (AddTextChannelUserResponse) {};
 }
 
 message GetTextChannelsRequest {
