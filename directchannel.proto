@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package directchannel;
+
+option java_package = "com.coocumba.directchannel.proto";
+option java_outer_classname = "DirectChannelProto";
+
+import "google/protobuf/empty.proto";
+
+service DirectChannelService {
+  rpc createDirectChannel (CreateDirectChannelRequest) returns (CreateDirectChannelResponse) {};
+  rpc getDirectChannel (GetDirectChannelRequest) returns (GetDirectChannelResponse) {};
+  rpc getDirectChannels (GetDirectChannelsRequest) returns (GetDirectChannelsResponse) {};
+  rpc deleteDirectChannel (DeleteDirectChannelRequest) returns (google.protobuf.Empty) {};
+}
+
+message CreateDirectChannelRequest {
+  repeated string participant_ids = 1;
+}
+
+message CreateDirectChannelResponse {
+  string id = 1;
+  repeated Participant participants = 2;
+}
+
+message GetDirectChannelRequest {
+  string id = 1;
+}
+
+message GetDirectChannelResponse {
+  string id = 1;
+  repeated Participant participants = 2;
+}
+
+message GetDirectChannelsRequest {
+  string user_id = 1;
+}
+
+message GetDirectChannelsResponse {
+  repeated DirectChannel directchannels = 1;
+}
+
+message DeleteDirectChannelRequest {
+  string id = 1;
+}
+
+message Participant {
+  string user_mail = 1;
+  string user_name = 2;
+  string id = 3;
+  string dob = 4;
+}
+
+message DirectChannel {
+  string id = 1;
+  repeated Participant participants = 2;
+}
