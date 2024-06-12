@@ -3,41 +3,50 @@ syntax = "proto3";
 package messages;
 
 service MessagesService {
-  rpc createMessage(Message) returns (Message) {};
-  rpc getMessages(AntennaIdUsrId) returns (MessageList) {};
-  rpc deleteMessage(MessageId) returns (Result) {};
+  rpc createMessage (CreateMessageRequest) returns (CreateMessageResponse) {};
+  rpc getMessages (GetMessagesRequest) returns (GetMessagesResponse) {};
+  rpc deleteMessage (DeleteMessageRequest) returns (Result) {};
 }
 
-message MessageGet {
+message CreateMessageRequest {
   string id = 1;
-  string antenna_id = 2;
+  string channel_id = 2;
   string author_id = 3;
   string content = 4;
   string timestamp = 5;
   string chat_type = 6;
+}
+
+message CreateMessageResponse {
+  string id = 1;
+  string channel_id = 2;
+  string author_id = 3;
+  string content = 4;
+  string timestamp = 5;
+  string chat_type = 6;
+}
+
+message GetMessagesRequest {
+  string channel_id = 1;
+  string user_id = 2;
+  string chat_type = 3;
+}
+
+message GetMessagesResponse {
+  repeated Message messages = 1;
+}
+
+message DeleteMessageRequest {
+  string id = 1;
 }
 
 message Message {
   string id = 1;
-  string antenna_id = 2;
+  string channel_id = 2;
   string author_id = 3;
   string content = 4;
   string timestamp = 5;
   string chat_type = 6;
-}
-
-message MessageId {
-  string id = 1;
-}
-
-message AntennaIdUsrId {
-  string antenna_id = 1;
-  string usr_id = 2;
-  string chat_type = 3;
-}
-
-message MessageList {
-  repeated MessageGet messages = 1;
 }
 
 message Result {

@@ -3,61 +3,57 @@ syntax = "proto3";
 package friend;
 
 service FriendService {
-  rpc getFrds (MyId) returns (FrdsList) {};
-  rpc acceptFrd (InvitationId) returns (Result) {};
-  rpc rejectFrd (InvitationId) returns (Result) {};
-  rpc inviteFrd (InvitationReq) returns (Result) {};
-  rpc getPendingInvitation(MyId) returns (InvitationList) {};
+  rpc getFriends (GetFriendsRequest) returns (GetFriendsResponse) {};
+  rpc acceptFriend (AcceptFriendRequest) returns (Result) {};
+  rpc rejectFriend (RejectFriendRequest) returns (Result) {};
+  rpc inviteFriend (InviteFriendRequest) returns (Result) {};
+  rpc getPendingInvitation(GetPendingInvitationRequest) returns (GetPendingInvitationResponse) {};
 }
 
 message Empty {}
 
-message MyId {
+message GetFriendsRequest {
   string id = 1;
 }
 
-message InvitationId {
+message GetFriendsResponse {
+  repeated Friend friends = 1;
+}
+
+message AcceptFriendRequest {
   string invitation_id = 1;
 }
 
-message SenderId {
-  string sender_id = 1;
+message RejectFriendRequest {
+  string invitation_id = 1;
+
 }
 
-message FrdsList {
-  repeated Frd frds = 1;
-}
-
-message Frd {
-  string usr_mail = 1;
-  string usr_name = 2;
-  string id = 3;
-  string dob = 4;
-}
-
-message InvitationList {
-  repeated Invitation invitations = 1;
-}
-
-message Invitation {
-  string id = 1;
-  Frd sender = 2;
-  string receiver_id = 3;
-}
-
-message InvitationReq {
+message InviteFriendRequest {
   string sender_id = 1;
   string sender_mail = 2;
   string target_mail_address = 3;
 }
 
-message SenderReceiverId {
-  string sender_id = 1;
-  string receiver_id = 2;
+message GetPendingInvitationRequest {
+  string id = 1;
 }
 
-message ReceiverId {
-  string receiver_id = 1;
+message Friend {
+  string user_mail = 1;
+  string user_name = 2;
+  string id = 3;
+  string dob = 4;
+}
+
+message GetPendingInvitationResponse {
+  repeated Invitation invitations = 1;
+}
+
+message Invitation {
+  string id = 1;
+  Friend sender = 2;
+  string receiver_id = 3;
 }
 
 message Result {
